@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 class Ticket(models.Model):
     ticket_title = models.CharField(max_length=150)
     ticket_content = models.TextField()
@@ -19,3 +18,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_title
+
+
+
