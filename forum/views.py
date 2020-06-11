@@ -2,13 +2,26 @@ from django.shortcuts import render
 
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Ticket, Comment
-from .forms import CommentForm
+from .forms import TicketForm, CommentForm
 
 
 def index(request):
     latest_ticket_list = Ticket.objects.order_by('-pub_date')[:5]
     context = {'latest_ticket_list': latest_ticket_list}
     return render(request, 'forum/index.html', context)
+
+
+def ticket(request):
+    if request.method == 'POST':
+        ticket_form = TicketForm(request.POST)
+
+        if ticket_form.is_valid():
+            ticket_form.save()
+            return HttpResponseRedirect(request.path)
+    else:
+        ticket_form = TicketForm()
+    context = {'ticketForm': ticket_form}
+    return render(request, 'forum/ticket.html', context)
 
 
 def detail(request, ticket_id):

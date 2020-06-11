@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Forum</title>
+    <title>Forum Info - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
     <div class="container">
 
         {% if latest_ticket_list %}
-
+            <p><a href="{% url 'ticket' %}" class="btn btn-lg btn-primary">Create a new Ticket</a></p>
             {% for ticket in latest_ticket_list %}
 
                 <div class="panel panel-default">
@@ -37,7 +37,7 @@
 
         {% else %}
             <div class="alert alert-danger">
-              <strong>No Ticket created!</strong> Click <a href="#">here</a> in order to create Ticket
+              <strong>No Ticket created!</strong> Click <a href="{% url 'ticket' %}">here</a> in order to create Ticket
             </div>
         {% endif %}
 

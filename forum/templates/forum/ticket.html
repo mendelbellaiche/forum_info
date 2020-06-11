@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum Info - Create a new Ticket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {% load bootstrap_tags %}
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Forum Info</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h2>Create a new Ticket</h2>
+        <form action="{% url 'ticket' %}" method="post">
+            {% csrf_token %}
+            {{ ticketForm | as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-lg btn-primary">Create the Ticket</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>
