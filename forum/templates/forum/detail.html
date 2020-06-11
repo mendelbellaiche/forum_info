@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        p {
+            text-align: justify;
+        }
+
+        .pub_date {
+            color: gray;
+            font-size: 1.2em;
+            text-align: right;
+        }
+
+        .comment_title {
+            font-weight: bold;
+        }
+
+        .comment_date {
+            color: gray;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    {% load bootstrap_tags %}
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Forum Info</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>{{ ticket.ticket_title }}</h1>
+
+        <p class="pub_date">{{ ticket.pub_date }}</p>
+
+        <div class="well well-lg">
+            <p>{{ ticket.ticket_content }}</p>
+        </div>
+
+
+        <br />
+
+        <h3>{{ comments|length }} Comments</h3>
+
+        {% if comments %}
+            {% for comment in comments %}
+                <p class="comment_title">{{ comment.comment_title }}</p>
+                <p>{{ comment.comment_content }}</p>
+                <p class="comment_date">{{ comment.pub_date }}</p>
+                <hr />
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-danger">
+              <strong>No Comment created!</strong> You can write down a comment by the form below.
+            </div>
+        {% endif %}
+
+
+        <h2>Your comment</h2>
+
+        <form action="{% url 'detail' ticket.id %}" method="post">
+            {% csrf_token %}
+            {{ commentForm | as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-lg btn-primary">Leave a comment</button>
+            </div>
+        </form>
+        <br />
+    </div>
+
+</body>
+</html>
