@@ -56,6 +56,16 @@
 
         <br />
 
+        <h2>Your comment</h2>
+
+        <form action="{% url 'detail' ticket.id %}" method="post">
+            {% csrf_token %}
+            {{ commentForm | as_bootstrap }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-lg btn-primary">Leave a comment</button>
+            </div>
+        </form>
+
         <h3>{{ comments|length }} Comment{% if comments|length > 1 %}s{% endif %}</h3>
 
         {% if comments %}
@@ -71,16 +81,6 @@
             </div>
         {% endif %}
 
-
-        <h2>Your comment</h2>
-
-        <form action="{% url 'detail' ticket.id %}" method="post">
-            {% csrf_token %}
-            {{ commentForm | as_bootstrap }}
-            <div class="form-actions">
-                <button type="submit" class="btn btn-lg btn-primary">Leave a comment</button>
-            </div>
-        </form>
         <br />
     </div>
 

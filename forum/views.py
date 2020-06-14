@@ -27,7 +27,7 @@ def ticket(request):
 def detail(request, ticket_id):
     try:
         ticket = Ticket.objects.get(pk=ticket_id)
-        comments = ticket.comment_set.all()
+        comments = ticket.comment_set.all().order_by('-pub_date')
 
         if request.method == 'POST':
             comment_form = CommentForm(request.POST)
