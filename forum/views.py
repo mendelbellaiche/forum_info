@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
 from .models import Ticket, Comment
 from .forms import TicketForm, CommentForm
 
@@ -44,3 +44,18 @@ def detail(request, ticket_id):
         raise Http404("Question does not exist")
     context = {'ticket': ticket, 'comments': comments, 'commentForm': comment_form}
     return render(request, 'forum/detail.html', context)
+
+
+def data(request):
+    tickets = Ticket.objects.all()
+    comments = Comment.objects.all()
+    data = {
+        'number_tickets': len(tickets),
+        'number_comments': len(comments)
+    }
+    return JsonResponse(data)
+
+
+def view(request):
+    context = dict()
+    return render(request, 'forum/view.html', context)

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum Info - Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Forum Info</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="{% url 'view' %}">Data</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Data</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <canvas id="pie-chart" width="800" height="450"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+        $(function() {
+
+            $.ajax({
+                url: '../data/',
+                success: function (data) {
+
+                    new Chart(document.getElementById("pie-chart"), {
+                        type: 'pie',
+                        data: {
+                          labels: ["Number of Tickets", "Number of Comments", "Total"],
+                          datasets: [{
+                            label: "Population (millions)",
+                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+                            data: [data.number_tickets, data.number_comments, data.number_tickets + data.number_comments]
+                          }]
+                        },
+                        options: {
+                          title: {
+                            display: true,
+                            text: 'Number of Tickets and Comments'
+                          }
+                        }
+                    });
+
+                }
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>
