@@ -9,7 +9,7 @@ $(function() {
                 data: {
                   labels: ["Number of Tickets", "Number of Comments", "Total"],
                   datasets: [{
-                    label: "Population (millions)",
+                    label: "Number of Item",
                     backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
                     data: [data.number_tickets, data.number_comments, data.number_tickets + data.number_comments]
                   }]
