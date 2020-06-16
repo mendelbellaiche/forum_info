@@ -1,0 +1,19 @@
+
+p {
+    text-align: justify;
+}
+
+.pub_date {
+    color: gray;
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.comment_title {
+    font-weight: bold;
+}
+
+.comment_date {
+    color: gray;
+    font-size: 0.8em;
+}

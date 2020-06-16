@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Forum Info - Data</title>
+    <title>Forum Info - Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+    </style>
 </head>
 <body>
 
-    {% load static %}
+
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -26,7 +31,7 @@
     </nav>
 
     <div class="container">
-        <h1>Data</h1>
+        <h1 class="text-center">Dashboard</h1>
 
         <div class="container">
             <div class="row">

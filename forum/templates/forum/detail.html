@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Forum Info - {{ ticket.ticket_title }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <style>
-        p {
-            text-align: justify;
-        }
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 
-        .pub_date {
-            color: gray;
-            font-size: 1.2em;
-            text-align: right;
-        }
-
-        .comment_title {
-            font-weight: bold;
-        }
-
-        .comment_date {
-            color: gray;
-            font-size: 0.8em;
-        }
-    </style>
 </head>
 <body>
     {% load bootstrap_tags %}
